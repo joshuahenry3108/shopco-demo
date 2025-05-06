@@ -1,7 +1,7 @@
 revolte:
    version: '1.0'
-   project: Next
-   appName: next-js-app
+   project: shopco
+   appName: shopco-ecommerce
    env:
      qa:
        branch: qa
