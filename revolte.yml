@@ -1,13 +1,12 @@
 revolte:
   version: '1.0'
-  project: demo2
-  appName: shopco
+  project: Next
+  appName: next-js-app
   env:
-    staging:
-      branch: main
+    preview:
       services:
         rid_1:
-          name: ecom
+          name: web-service
           type: WEB_SERVICE
           entryPoint: index.js
           specifications:
@@ -26,6 +25,6 @@ revolte:
           type: DATABASE
           specifications:
             cpu: 2
-            memory: 2
-            storage: 30
+            memory: 4
+            storage: 50
             engine: postgres
