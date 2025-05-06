@@ -1,0 +1,31 @@
+revolte:
+  version: '1.0'
+  project: demo2
+  appName: shopco
+  env:
+    staging:
+      branch: main
+      services:
+        rid_1:
+          name: ecom
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+          properties:
+            health: /api/health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              PORT: 8080
+              DATABASE_URL: '#{db.dbConnectionString}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+            engine: postgres
