@@ -24,6 +24,7 @@ revolte:
               DATABASE_USERNAME: '#{db.dbUsername}'
               DATABASE_PASSWORD: '#{db.dbPassword}'
               DATABASE_NAME: '#{db.dbName}'
+              VAR_1: var-1
         rid_2:
           name: db
           type: DATABASE
