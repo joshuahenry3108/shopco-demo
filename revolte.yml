@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: ZenPro
-  appName: zen-pro-fe-shopco
+  project: Zepto
+  appName: amaze-app
   env:
     production:
       branch: main
@@ -67,7 +67,7 @@ revolte:
             storage: 50
             engine: postgres
     qa:
-      branch: main
+      branch: qa
       services:
         rid_1:
           name: web-service
@@ -78,11 +78,11 @@ revolte:
             memory: 2
             storage: 30
           properties:
-            health: /api/health
+            health: /health
             port: 8080
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbConnectionString}'
+              DATABASE_URL: '#{db.dbUrl}'
               DATABASE_PORT: '#{db.dbPort}'
               DATABASE_USERNAME: '#{db.dbUsername}'
               DATABASE_PASSWORD: '#{db.dbPassword}'
