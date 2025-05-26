@@ -19,3 +19,4 @@ revolte:
             variables:
               BASE_URL: /api/v1
               VAR_1: variables-1
+              VAR_2: variables-2
