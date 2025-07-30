@@ -1,10 +1,9 @@
 revolte:
   version: '1.0'
-  project: Zestra
-  appName: zech-tech
+  project: CGI Pro
+  appName: cgi-backend
   env:
-    qa:
-      branch: main
+    preview:
       services:
         rid_1:
           name: web-service
@@ -15,7 +14,7 @@ revolte:
             memory: 2
             storage: 30
           properties:
-            health: /health
+            health: /api/health
             port: 8080
             variables:
               BASE_URL: /api/v1
