@@ -1,9 +1,73 @@
 revolte:
   version: '1.0'
-  project: CGI Pro
-  appName: cgi-backend
+  project: Sample backend project
+  appName: app-with-insights
   env:
-    preview:
+    production:
+      branch: main
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+            autoScaling:
+              replica:
+                min: 1
+                max: 3
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            engine: postgres
+            cpu: 2
+            memory: 4
+            storage: 20
+    staging:
+      branch: staging
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            engine: postgres
+            cpu: 2
+            memory: 1
+            storage: 20
+    qa:
+      branch: qa
       services:
         rid_1:
           name: web-service
@@ -20,6 +84,49 @@ revolte:
               BASE_URL: /api/v1
               PORT: 8080
               DATABASE_URL: '#{db.dbConnectionString}'
+          insights:
+            cpu:
+              - cpu_time_idle
+              - cpu_time_system
+              - cpu_time_user
+            swap:
+              - swap_used
+            disk:
+              - disk_free
+              - disk_total
+              - disk_used
+            mem:
+              - mem_free
+              - mem_total
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            engine: postgres
+            cpu: 2
+            memory: 1
+            storage: 20
+    preview:
+      services:
+        rid_1:
+          name: web-service
+          type: WEB_SERVICE
+          entryPoint: index.js
+          specifications:
+            cpu: 2
+            memory: 2
+            storage: 30
+          properties:
+            health: /health
+            port: 8080
+            variables:
+              BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
         rid_2:
           name: db
           type: DATABASE
