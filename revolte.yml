@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: Goldwin
-  appName: nextjs
+  project: Stack Project
+  appName: app-be
   env:
     production:
       branch: main
@@ -19,12 +19,15 @@ revolte:
                 min: 1
                 max: 3
           properties:
-            health: /api/health
+            health: /health
             port: 8080
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbConnectionString}'
-              PORT: 8080
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
         rid_2:
           name: db
           type: DATABASE
@@ -104,16 +107,12 @@ revolte:
             memory: 2
             storage: 30
           properties:
-            health: /health
+            health: /api/health
             port: 8080
             variables:
               BASE_URL: /api/v1
-              DATABASE_URL: '#{db.dbUrl}'
-              DATABASE_PORT: '#{db.dbPort}'
-              DATABASE_USERNAME: '#{db.dbUsername}'
-              DATABASE_PASSWORD: '#{db.dbPassword}'
-              DATABASE_NAME: '#{db.dbName}'
-              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+              DATABASE_URL: '#{db.dbConnectionString}'
+              PORT: 8080
         rid_2:
           name: db
           type: DATABASE
