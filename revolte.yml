@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
   project: chrome
-  appName: chrome-new
+  appName: shopco
   env:
     production:
       branch: main
@@ -11,8 +11,8 @@ revolte:
           type: WEB_SERVICE
           entryPoint: index.js
           specifications:
-            cpu: 1
-            memory: 2
+            cpu: 4
+            memory: 16
             storage: 30
             autoScaling:
               replica:
