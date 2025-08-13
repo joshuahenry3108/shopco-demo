@@ -78,7 +78,7 @@ revolte:
             memory: 1
             storage: 30
           properties:
-            health: /api/health
+            health: /test
             port: 8080
             variables:
               BASE_URL: /api/v1
