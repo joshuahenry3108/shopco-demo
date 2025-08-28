@@ -1,15 +1,16 @@
 revolte:
   version: '1.0'
-  project: Metayb
-  appName: meta-be
+  project: Scalar
+  appName: scale-app
   config:
     codeReview:
       summarize: true
-      suggestFixes: true
-      commentStyle: Concise
+      suggestFixes: false
+      commentStyle: Verbose
   env:
     staging:
       branch: main
+      codeReview: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -72,6 +73,7 @@ revolte:
             engine: postgres
     production:
       branch: main
+      codeReview: false
       services:
         rid_1:
           type: WEB_SERVICE
@@ -112,7 +114,7 @@ revolte:
           entryPoint: index.js
           properties:
             health: /api/health
-            port: 8076
+            port: 8080
             variables:
               BASE_URL: /api/v1
               DATABASE_URL: '#{db.dbUrl}'
