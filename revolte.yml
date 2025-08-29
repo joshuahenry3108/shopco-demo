@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: Scalar
-  appName: shopco
+  project: AD Project
+  appName: backend deployment
   config:
     codeReview:
       summarize: true
